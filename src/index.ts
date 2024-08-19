@@ -20,3 +20,21 @@ numbers.forEach(n => n.toFixed);
 
 /* Tuples */
 
+let user: [number, string] = [1, "Otello"];
+user.push(1);
+
+/* Enums */
+
+// const small = 1;
+const medium = 2;
+const large = 3;
+
+//PascalCase
+const enum Size {
+    small = 1, medium, large
+}
+
+let mySize: Size =  Size.medium;
+console.log(mySize);
+
+/* Functions */
