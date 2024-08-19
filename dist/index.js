@@ -14,4 +14,17 @@ const medium = 2;
 const large = 3;
 let mySize = 2;
 console.log(mySize);
+function calculateTax(income, taxYear = 2024) {
+    if (taxYear < 2024)
+        return income * 1.2;
+    return income * 1.3;
+}
+calculateTax(10_000);
+let employee = {
+    id: 1,
+    name: 'Otello',
+    retire: (date) => {
+        console.log(date);
+    }
+};
 //# sourceMappingURL=index.js.map

@@ -38,3 +38,30 @@ let mySize: Size =  Size.medium;
 console.log(mySize);
 
 /* Functions */
+
+function calculateTax(income: number, taxYear: number = 2024): number {
+    // if (income < 50_000)
+    if (taxYear < 2024)
+        return income * 1.2;
+    return income * 1.3;
+}
+
+calculateTax(10_000);
+
+/* Objects */
+
+let employee: {
+    readonly id: number, 
+    name: string, 
+    retire: (date: Date) => void
+} = {
+    id: 1, 
+    name: 'Otello',
+    retire: (date: Date) => {
+        console.log(date);
+    }
+};
+
+// employee.name = 'Otello';
+
+
