@@ -27,4 +27,30 @@ let employee = {
         console.log(date);
     }
 };
+function kgToLbs(weight) {
+    if (typeof weight === 'number')
+        return weight * 2.2;
+    else
+        return parseInt(weight) * 2.2;
+}
+kgToLbs(10);
+kgToLbs('10');
+let weight;
+let textBox = {
+    drag: () => { },
+    resize: () => { }
+};
+let quantity = 100;
+function greet(name) {
+    if (name)
+        console.log(name.toUpperCase);
+    else
+        console.log('Hola!');
+}
+greet(undefined);
+function getCustomer(id) {
+    return id === 0 ? null : { birthday: new Date() };
+}
+let customer = getCustomer(1);
+console.log(customer?.birthday);
 //# sourceMappingURL=index.js.map

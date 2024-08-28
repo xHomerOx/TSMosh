@@ -50,18 +50,106 @@ calculateTax(10_000);
 
 /* Objects */
 
-let employee: {
+// let employee: {
+//     readonly id: number, 
+//     name: string, 
+//     retire: (date: Date) => void
+// } = {
+//     id: 1, 
+//     name: 'Otello',
+//     retire: (date: Date) => {
+//         console.log(date);
+//     }
+// };
+
+// employee.name = 'Otello';
+
+/* Type Aliases */
+
+type Employee = {
     readonly id: number, 
     name: string, 
     retire: (date: Date) => void
-} = {
+}
+
+let employee: Employee = {
     id: 1, 
     name: 'Otello',
     retire: (date: Date) => {
         console.log(date);
     }
-};
+}
 
-// employee.name = 'Otello';
+/* Union Types */
 
+function kgToLbs(weight: number | string): number {
+    //Narrowing
+    if (typeof weight === 'number')
+        return weight * 2.2;
+    else
+        return parseInt(weight) * 2.2;   
+}
 
+kgToLbs(10);
+kgToLbs('10');
+
+/* Intersection Types */
+
+let weight: number & string;
+
+type Draggable = {
+    drag: () => void;
+}
+
+type Resizable = {
+    resize: () => void;
+}
+
+type UIWidget = Draggable & Resizable;
+
+let textBox: UIWidget = {
+    drag: () => {},
+    resize: () => {}
+}
+
+/* Literal Types */
+
+type Quantity = 50 | 100;
+//Literal (exact, specific)
+let quantity: Quantity = 100;
+
+type Metric = 'cm' | 'inch';
+
+/* Nullable Types */
+function greet(name: string | null | undefined) {
+    if (name)
+        console.log(name.toUpperCase);
+    else
+        console.log('Hola!');
+}
+
+greet(undefined);
+
+/* Optional Chaining */
+
+type Customer = {
+    birthday?: Date;
+}
+
+function getCustomer(id: number): Customer | null | undefined {
+    return id === 0  ? null : { birthday: new Date() }
+}
+
+let customer = getCustomer(1);
+// if (customer !== null && customer !== undefined) 
+//Optional property access operator
+console.log(customer?.birthday?.getFullYear());
+
+//Optional argument access operator
+//if (customers !== null && customer !== undefined)
+// customers?.[0];
+
+//Optional call
+// let log: any = (message: string) => console.log(message);
+let log: any = null;
+log?.('a');
