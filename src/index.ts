@@ -5,9 +5,9 @@ let course: string = 'TypeScript';
 let is_published: boolean = true;
 let level;
 
-function render(document: any) {
-    console.log(document);
-}
+// function render(document: any) {
+//     console.log(document);
+// }
 
 /* Arrays */
 
@@ -153,3 +153,52 @@ console.log(customer?.birthday?.getFullYear());
 // let log: any = (message: string) => console.log(message);
 let log: any = null;
 log?.('a');
+
+/* Nullish Coaelscing Operator */
+
+let speed: number | null =  null;
+let ride = {
+    //Falsy (undefined, null, '', false, 0)
+    // speed: speed || 30
+    // speed: speed !== null ? speed : 30
+    //Nullish coaelscing operator
+    speed: speed ?? 30
+}
+
+/* Type Assertions */
+
+// let phone = document.getElementById('phone') as HTMLInputElement;
+let phone = <HTMLInputElement> document.getElementById('phone');
+//HTMLElement
+//HTMLInputElement
+phone.value
+
+/* The unknown Type */
+
+let x: any;
+
+// function render(document: unknown) {
+//     //Narrowing
+//     if (document instanceof WordDocument) {
+//         document.toUpperCase();
+//     }
+//     document.move();
+//     document.fly();
+//     document.wheteaverWeWant();
+// }
+
+/* The never Type */
+
+function reject(message: string): never {
+    throw new Error(message);
+}
+
+function processEvents(): never {
+    while (true) {
+        //Read a message from a queue
+    }
+}
+
+reject('...');
+// processEvents();
+// console.log('Hello World');

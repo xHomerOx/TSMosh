@@ -3,9 +3,6 @@ let sales = 123_456_789;
 let course = 'TypeScript';
 let is_published = true;
 let level;
-function render(document) {
-    console.log(document);
-}
 let numbers = [];
 numbers.forEach(n => n.toFixed);
 let user = [1, "Otello"];
@@ -52,5 +49,22 @@ function getCustomer(id) {
     return id === 0 ? null : { birthday: new Date() };
 }
 let customer = getCustomer(1);
-console.log(customer?.birthday);
+console.log(customer?.birthday?.getFullYear());
+let log = null;
+log?.('a');
+let speed = null;
+let ride = {
+    speed: speed ?? 30
+};
+let phone = document.getElementById('phone');
+phone.value;
+let x;
+function reject(message) {
+    throw new Error(message);
+}
+function processEvents() {
+    while (true) {
+    }
+}
+reject('...');
 //# sourceMappingURL=index.js.map
