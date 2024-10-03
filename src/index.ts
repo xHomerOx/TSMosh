@@ -53,9 +53,9 @@ class Account_2 {
         }
     }
 
-    private calculateTax() {
+    // private calculateTax() {
 
-    }
+    // }
 
     getBalance(): number {
         return this._balance;
