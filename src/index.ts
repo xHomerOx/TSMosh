@@ -73,3 +73,70 @@ console.log(account_3.getBalance());
 
 /* Parameter Properties */
 
+class Account_3 {
+    // readonly id: number;
+    // owner: string;
+    // private _balance: number;
+    nickname?: string;
+
+    constructor(
+        public readonly id: number,
+        public owner: string, 
+        private _balance: number
+    ) {
+        // this.id = id;
+        // this.owner = owner;
+        // this._balance = balance;
+    }
+
+    deposit(amount: number): void {
+        if (amount <= 0) {
+            throw new Error("Invalid amount");
+        }else{
+            //Record a transaction
+            this._balance += amount;
+        }
+    }
+
+    // private calculateTax() {
+
+    // }
+
+    get balance(): number {
+        return this._balance;
+    }
+
+    // set balance(value: number) {
+    //     if (value < 0)
+    //         throw new Error('Invalid value');
+    //     this._balance = value;
+    // }
+}
+
+/* Getters and Setters */
+
+let account_4 = new Account_3(1, 'Otello', 0);
+console.log(account_4.balance);
+// account_4.balance = 1;
+
+/* Index Signatures */
+
+// let person = {};
+// person.name = 'a';
+
+class SeatAssignment {
+    // A1, A2, ...
+    // Boz Maraldo, Otello, ...
+    // A1: string;
+    // A2: string; //'Boz Maraldo Otello'
+    // Index signature property
+    [setNumber: string]: string;
+}
+
+let seats = new SeatAssignment();
+seats.A1 = 'Otello',
+seats.A2 = 'Luciano',
+seats['A3'] = 'Otello'
+// seats.A3 = 1; //Type Error
+
+/* Static Members */
