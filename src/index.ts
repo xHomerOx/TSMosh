@@ -24,8 +24,8 @@ class Account {
 
 let account = new Account(1, 'Otello', 0);
 account.deposit(100);
-console.log(typeof account);
-console.log(account instanceof Account);
+// console.log(typeof account);
+// console.log(account instanceof Account);
 
 //Union
 // if (typeof someObj === 'number') {}
@@ -68,7 +68,7 @@ let account_2 = new Account(1, 'Otello', 0);
 
 let account_3 = new Account_2(1, 'Otello', 0);
 // account_3.balance = -1;
-console.log(account_3.getBalance());
+// console.log(account_3.getBalance());
 // account_3.calculateTax();
 
 /* Parameter Properties */
@@ -116,7 +116,7 @@ class Account_3 {
 /* Getters and Setters */
 
 let account_4 = new Account_3(1, 'Otello', 0);
-console.log(account_4.balance);
+// console.log(account_4.balance);
 // account_4.balance = 1;
 
 /* Index Signatures */
@@ -140,3 +140,63 @@ seats['A3'] = 'Otello'
 // seats.A3 = 1; //Type Error
 
 /* Static Members */
+
+class Ride {
+    // passenger
+    // pickUpLocation
+    // dropOffLocation
+    private static _activeRides: number = 0;
+
+    start() { Ride._activeRides++; }
+    stop() { Ride._activeRides--; }
+
+    static get activeRides() {
+        return Ride._activeRides;
+    }
+}
+
+
+let ride1 = new Ride();
+ride1.start();
+
+let ride2 = new Ride();
+ride2.start();
+
+// console.log(Ride.activeRides);
+
+/* Inheritance */
+
+class Person {
+    constructor(public firstName: string, public lastName: string) {}
+
+    get fullName() {
+        return this.firstName + ' ' + this.lastName;
+    }
+
+    walk() {
+        console.log('walking');
+    }
+}
+
+class Student extends Person {
+    constructor(public studentId: number, firstName: string, lastName: string) {
+        super(firstName, lastName);
+    }
+
+    takeTest() {
+        console.log('taking a test');
+    }
+}
+
+let student = new Student(1, 'Otello', 'Boz Maraldo');
+
+/* Method Overriding */
+
+class Teacher extends Person {
+    override get fullName() {
+        return 'Professor ' + super.fullName;
+    }
+}
+
+let teacher = new Teacher('Otello', 'Boz Maraldo');
+console.log(teacher.fullName);
