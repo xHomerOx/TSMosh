@@ -199,4 +199,50 @@ class Teacher extends Person {
 }
 
 let teacher = new Teacher('Otello', 'Boz Maraldo');
-console.log(teacher.fullName);
+// console.log(teacher.fullName);
+
+/* Polymorphism */
+
+class Principal extends Person {
+    override get fullName() {
+        return 'Principal ' + super.fullName;
+    }
+}
+
+printNames([
+    new Student(1, 'Otello', 'Boz Maraldo'),
+    new Teacher('Otello', 'Boz Maraldo'),
+    new Principal('Otello', 'Boz Maraldo')
+])
+
+function printNames(people: Person[]) {
+    for (let person of people)
+        console.log(person.fullName);
+}
+
+/* Private vs Protected Members */
+
+class Person2 {
+    constructor(public firstName: string, public lastName: string) {}
+
+    get fullName() {
+        return this.firstName + ' ' + this.lastName;
+    }
+
+    protected walk() {
+        console.log('walking');
+    }
+}
+
+class Student2 extends Person2 {
+    constructor(public studentId: number, firstName: string, lastName: string) {
+        super(firstName, lastName);
+    }
+
+    takeTest() {
+        this.walk();
+        console.log('taking a test');
+    }
+}
+
+/* Abstract Classes and Methods */

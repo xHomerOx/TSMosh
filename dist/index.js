@@ -115,5 +115,43 @@ class Teacher extends Person {
     }
 }
 let teacher = new Teacher('Otello', 'Boz Maraldo');
-console.log(teacher.fullName);
+class Principal extends Person {
+    get fullName() {
+        return 'Principal ' + super.fullName;
+    }
+}
+printNames([
+    new Student(1, 'Otello', 'Boz Maraldo'),
+    new Teacher('Otello', 'Boz Maraldo'),
+    new Principal('Otello', 'Boz Maraldo')
+]);
+function printNames(people) {
+    for (let person of people)
+        console.log(person.fullName);
+}
+class Person2 {
+    firstName;
+    lastName;
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    get fullName() {
+        return this.firstName + ' ' + this.lastName;
+    }
+    walk() {
+        console.log('walking');
+    }
+}
+class Student2 extends Person2 {
+    studentId;
+    constructor(studentId, firstName, lastName) {
+        super(firstName, lastName);
+        this.studentId = studentId;
+    }
+    takeTest() {
+        this.walk();
+        console.log('taking a test');
+    }
+}
 //# sourceMappingURL=index.js.map
