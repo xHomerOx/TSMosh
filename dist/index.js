@@ -154,4 +154,32 @@ class Student2 extends Person2 {
         console.log('taking a test');
     }
 }
+class Shape {
+    color;
+    constructor(color) {
+        this.color = color;
+    }
+}
+class Circle extends Shape {
+    radius;
+    constructor(radius, color) {
+        super(color);
+        this.radius = radius;
+    }
+    render() {
+        console.log('Rendering a circle');
+    }
+}
+class GoogleCalendar {
+    name;
+    constructor(name) {
+        this.name = name;
+    }
+    addEvent() {
+        throw new Error("Method not implemented.");
+    }
+    removeEvent() {
+        throw new Error("Method not implemented.");
+    }
+}
 //# sourceMappingURL=index.js.map
