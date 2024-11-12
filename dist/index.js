@@ -60,4 +60,21 @@ class ProductStore extends Store {
         return [];
     }
 }
+class Store2 {
+    objects = [];
+    add(obj) {
+        this.objects.push(obj);
+    }
+    find(property, value) {
+        return this.objects.find(obj => obj[property] === value);
+    }
+}
+let store3 = new Store2();
+store3.add({ name: 'a', price: 1 });
+store3.find('name', 'a');
+store3.find('price', 1);
+let product = {
+    name: 'a',
+    price: 1
+};
 //# sourceMappingURL=index.js.map

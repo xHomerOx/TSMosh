@@ -74,7 +74,7 @@ echo2(new Customer2('a'));
 
 /* Extending Generic Classes */
 
-interface Product {
+interface Product2 {
     name: string,
     price: number
 }
@@ -111,3 +111,58 @@ class ProductStore extends Store<Product> {
         return [];
     }
 }
+
+/* The keyof Operator */
+
+class Store2<T> {
+    protected objects: T[]= [];
+
+    add(obj: T): void {
+        this.objects.push(obj);
+    }
+
+    //T is Product
+    //keyof T is 'name' | 'price'
+    find(property: keyof T, value: unknown): T | undefined {
+        return this.objects.find(obj => obj[property] === value);
+    }
+}
+
+let store3 = new Store2<Product2>();
+store3.add({ name: 'a', price: 1 });
+store3.find('name', 'a');
+store3.find('price', 1);
+// store3.find('nonExistentProperty', 'a');
+
+/* Type Mapping */
+
+interface Product3 {
+    name: string,
+    price: number
+}
+
+// interface ReadOnlyProduct {
+//     readonly name: string,
+//     readonly price: number,
+// }
+
+type ReadOnly<T> = {
+    //Index signature
+    //Keyof operator
+    readonly [K in keyof T]: T[K];
+}
+
+type Optional<T> = {
+    [K in keyof T]?: T[K];
+}
+
+type Nullable<T> = {
+    [K in keyof T]: T[K] | null;
+}
+
+let product: ReadOnly<Product3> = {
+    name: 'a',
+    price: 1
+}
+
+// product.name = 'a';
